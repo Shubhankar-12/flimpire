@@ -6,9 +6,9 @@ import useStyles from "./styles";
 const App = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <CssBaseline />
-      <Navbar className={classes.root} />
+      <Navbar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Routes>

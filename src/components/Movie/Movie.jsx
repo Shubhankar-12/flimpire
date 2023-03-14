@@ -5,10 +5,9 @@ import useStyles from "./Movie.Styles";
 
 const Movie = ({ movie, i }) => {
   const classes = useStyles();
-  console.log(movie, i);
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
-      <Grow in={i} timeout={(i + 1) * 250}>
+      <Grow in={Boolean(i)} timeout={(i + 1) * 250}>
         <Link className={classes.links} to={`/movies/${movie.id}`}>
           <img
             src={

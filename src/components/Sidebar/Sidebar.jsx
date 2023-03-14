@@ -7,10 +7,13 @@ import {
   ListSubheader,
   ListItemIcon,
   CircularProgress,
+  ListItemButton,
+  Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/styles";
 import useStyles from "./Sidebar.styles";
+import { useGetGenresQuery } from "../../services/TMDB";
 const redLogo =
   "https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png";
 
@@ -32,6 +35,7 @@ const demoCategories = [
 const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
+  const { data, isFetching } = useGetGenresQuery();
   return (
     <>
       <Link to='/' className={classes.imgLink}>
@@ -46,7 +50,7 @@ const Sidebar = ({ setMobileOpen }) => {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} to='/' className={classes.links}>
-            <ListItem onClick={() => {}} button>
+            <ListItemButton onClick={() => {}}>
               {/* <ListItemIcon>
                 <img
                   src={redLogo}
@@ -56,17 +60,22 @@ const Sidebar = ({ setMobileOpen }) => {
                 />
               </ListItemIcon> */}
               <ListItemText primary={label} />
-            </ListItem>
+            </ListItemButton>
           </Link>
         ))}
       </List>
       <Divider />
       <List>
         <ListSubheader>Genres</ListSubheader>
-        {demoCategories.map(({ label, value }) => (
-          <Link key={value} to='/' className={classes.links}>
-            <ListItem onClick={() => {}} button>
-              {/* <ListItemIcon>
+        {isFetching ? (
+          <Box justifyContent='center' display='flex'>
+            <CircularProgress />
+          </Box>
+        ) : (
+          data.genres.map(({ name, id }) => (
+            <Link key={id} to='/' className={classes.links}>
+              <ListItem onClick={() => {}} button>
+                {/* <ListItemIcon>
                 <img
                   src={redLogo}
                   alt='icons'
@@ -74,10 +83,11 @@ const Sidebar = ({ setMobileOpen }) => {
                   height={30}
                 />
               </ListItemIcon> */}
-              <ListItemText primary={label} />
-            </ListItem>
-          </Link>
-        ))}
+                <ListItemText primary={name} />
+              </ListItem>
+            </Link>
+          ))
+        )}
       </List>
     </>
   );
