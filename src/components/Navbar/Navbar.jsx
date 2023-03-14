@@ -17,7 +17,7 @@ import useStyles from "./Navbar.styles";
 import { useTheme } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import { Sidebar, Search } from "..";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -43,7 +43,7 @@ const Navbar = () => {
           <IconButton color='inherit' sx={{ ml: 1 }} onClick={() => {}}>
             {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
-          {!isMobile && "Search..."}
+          {!isMobile && <Search />}
           <div>
             {!isAuthenticated ? (
               <Button color='inherit' onClick={() => {}}>
@@ -66,7 +66,7 @@ const Navbar = () => {
               </Button>
             )}
           </div>
-          {isMobile && "Search..."}
+          {isMobile && <Search />}
         </Toolbar>
       </AppBar>
       <div>
