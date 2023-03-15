@@ -7,8 +7,6 @@ import {
 } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useGetMoviesQuery } from "../../services/TMDB";
-import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
-
 import { MovieList } from "..";
 
 const Movies = () => {
