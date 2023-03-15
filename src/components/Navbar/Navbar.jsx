@@ -82,7 +82,7 @@ const Navbar = () => {
               <Button
                 color='inherit'
                 LinkComponent={Link}
-                to={`/profile/:id`}
+                to={`/profile/${user.id}`}
                 className={classes.linkBtn}
                 onClick={() => {}}
               >
