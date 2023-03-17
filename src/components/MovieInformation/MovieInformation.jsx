@@ -7,7 +7,6 @@ import {
   Grid,
   Box,
   CircularProgress,
-  useMediaQuery,
   Rating,
 } from "@mui/material";
 import {
