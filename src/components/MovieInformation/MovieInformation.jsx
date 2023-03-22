@@ -275,7 +275,7 @@ const MovieInformation = () => {
           />
         )}
       </Modal>
-      {/* ye to be completed */}
+      {/* yet to be completed */}
     </Grid>
   );
 };
