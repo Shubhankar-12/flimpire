@@ -207,7 +207,11 @@ const MovieInformation = () => {
                 >
                   IMDB
                 </Button>
-                <Button onClick={() => {}} href='#' endIcon={<Theaters />}>
+                <Button
+                  onClick={() => setOpen(true)}
+                  href='#'
+                  endIcon={<Theaters />}
+                >
                   Trailer
                 </Button>
               </ButtonGroup>
