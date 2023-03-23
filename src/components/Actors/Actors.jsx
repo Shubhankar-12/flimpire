@@ -1,21 +1,21 @@
 import { ArrowBack } from "@mui/icons-material";
 import { Button, CircularProgress, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetActorsQuery,
   useGetMoviesByActorIdQuery,
 } from "../../services/TMDB";
 import useStyles from "./Actors.styles";
-import { MovieList } from "..";
+import { MovieList, Pagination } from "..";
 
 const Actors = () => {
   const classes = useStyles();
   const navigate = useNavigate();
   const { id } = useParams();
   const { data, isFetching, error } = useGetActorsQuery(id);
-  const page = 1;
+  const [page, setPage] = useState(1);
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
   !error && console.log(data);
   return (
@@ -72,11 +72,11 @@ const Actors = () => {
               Movies
             </Typography>
             {movies && <MovieList movies={movies} numOfMovies={12} />}
-            {/* <Pagination
+            <Pagination
               currentPage={page}
               setPage={setPage}
               totalPages={movies?.total_pages}
-            /> */}
+            />
           </Box>
         </Grid>
       )}
