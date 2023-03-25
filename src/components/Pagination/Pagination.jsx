@@ -1,6 +1,5 @@
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
-import React from "react";
 import useStyles from "./Pagination.styles";
 
 const Pagination = ({ currentPage, setPage, totalPages }) => {
