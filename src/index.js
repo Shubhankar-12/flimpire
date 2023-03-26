@@ -4,6 +4,7 @@ import App from "./components/App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./app/store";
+import "./index.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const theme = createTheme({});
