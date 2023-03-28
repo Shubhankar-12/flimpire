@@ -13,7 +13,7 @@ const App = () => {
         <div className={classes.toolbar} />
         <Routes>
           <Route exact path='/movie/:id' element={<MovieInformation />} />
-
+          {/* multi routes */}
           <Route exact path={["/", "/approved"]} element={<Movies />} />
 
           <Route exact path='/actors/:id' element={<Actors />} />
