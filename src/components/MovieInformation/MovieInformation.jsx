@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Modal,
   Typography,
@@ -26,6 +26,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import {
+  useGetListQuery,
   useGetMovieQuery,
   useGetRecommendationsQuery,
 } from "../../services/TMDB";
@@ -40,6 +41,18 @@ const MovieInformation = () => {
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
   const { user } = useSelector(userSelector);
+  const { data: favouriteMovies } = useGetListQuery({
+    listName: "favorite/movies",
+    accountId: user.id,
+    sessionId: localStorage.getItem("session_id"),
+    page: 1,
+  });
+  const { data: watchlistMovies } = useGetListQuery({
+    listName: "watchlist/movies",
+    accountId: user.id,
+    sessionId: localStorage.getItem("session_id"),
+    page: 1,
+  });
 
   const { data: recommendation, isFetching: isRecommendationFetching } =
     useGetRecommendationsQuery({
@@ -50,6 +63,18 @@ const MovieInformation = () => {
   const [open, setOpen] = useState(false);
   const [isMovieFavorited, setIsMovieFavorited] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
+
+  useEffect(() => {
+    setIsMovieFavorited(
+      !!favouriteMovies?.results?.find((movie) => movie?.id === data?.id)
+    );
+  }, [favouriteMovies, data]);
+
+  useEffect(() => {
+    setIsMovieWatchlisted(
+      !!watchlistMovies?.results?.find((movie) => movie?.id === data?.id)
+    );
+  }, [watchlistMovies, data]);
 
   const addToFavorites = async () => {
     await axios.post(
