@@ -8,13 +8,11 @@ import "./index.css";
 import ToggleColorMode from "./utils/ToggleColorMode";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ToggleColorMode>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ToggleColorMode>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ToggleColorMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ToggleColorMode>
+  </Provider>
 );
