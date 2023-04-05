@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid } from "@mui/material";
 import useStyles from "./moviesList.styles";
 import { Movie } from "..";
