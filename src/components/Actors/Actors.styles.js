@@ -7,6 +7,7 @@ export default makeStyles((theme) => ({
     objectFit: "cover",
     boxShadow: "0.5em 1em 1em rgb(64, 64, 70)",
   },
+  // for btns
   btns: {
     marginTop: "2rem",
     display: "flex",
