@@ -1,5 +1,5 @@
 import { makeStyles } from "@mui/styles";
-
+//styles
 export default makeStyles((theme) => ({
   image: {
     maxWidth: "90%",
